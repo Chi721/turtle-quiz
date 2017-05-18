@@ -56,7 +56,6 @@
             	for(var i = 0; i < quizQuestionsLength; i++){
             		if (current.quizQuestions[i].selected === null) {
                         current.warning = true;
-
                         // jump to the first unanswered question
                         current.activeQuestionIndex = i;
                         break;
