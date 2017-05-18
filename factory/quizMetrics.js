@@ -1,3 +1,8 @@
+/**
+ * This factory is used to control and check the states of quiz.
+ * The available options are: 'quiz' and 'result'.
+ */
+
 (function(){
 
 	var app = angular.module('turtleFacts');

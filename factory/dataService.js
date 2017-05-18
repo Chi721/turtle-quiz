@@ -1,3 +1,8 @@
+/**
+ * This factory is used to request the needed data.
+ * Returns corresponding promise object.
+ */
+
 (function() {
 
     var app = angular.module('turtleFacts');
