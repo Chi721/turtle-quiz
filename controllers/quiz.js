@@ -12,13 +12,15 @@
         current.activeQuestionIndex = 0;
         current.questionAnswered = false;
         current.quizQuestions = [];
+        current.warning = false;
 
         dataService.quizQuestions().success(function(data) {
             current.quizQuestions = data;
         });
 
         /**
-         * [Answer a question by selecting an answer and assing the answer index to "selected" property
+         * Answer a question by selecting an answer and assing the 
+         * answer index to "selected" property
          * @param  {number} index : selected answer index
          * @return {}           
          */
@@ -49,6 +51,22 @@
             } else {
                 current.activeQuestionIndex = 0;
             }
+
+            if (current.activeQuestionIndex === 0) {
+            	for(var i = 0; i < quizQuestionsLength; i++){
+            		if (current.quizQuestions[i].selected === null) {
+                        current.warning = true;
+
+                        // jump to the first unanswered question
+                        current.activeQuestionIndex = i;
+                        break;
+                    }
+            	}
+            }
+        };
+
+        current.closeWarning = function(){
+        	current.warning = false;
         };
     }
 
