@@ -13,6 +13,7 @@
         current.questionAnswered = false;
         current.quizQuestions = [];
         current.warning = false;
+        current.finished = false;
 
         dataService.quizQuestions().success(function(data) {
             current.quizQuestions = data;
@@ -53,14 +54,20 @@
             }
 
             if (current.activeQuestionIndex === 0) {
+                var allAnswered = true;
+
             	for(var i = 0; i < quizQuestionsLength; i++){
             		if (current.quizQuestions[i].selected === null) {
                         current.warning = true;
+                        allAnswered = false;
+
                         // jump to the first unanswered question
                         current.activeQuestionIndex = i;
                         break;
                     }
             	}
+
+                current.finished = allAnswered;
             }
         };
 
@@ -70,6 +77,14 @@
          */
         current.closeWarning = function(){
         	current.warning = false;
+        };
+
+        current.confirmSubmitAnswers = function(){
+            // to do ...
+        };
+
+        current.cancelSubmitAnswers = function(){
+            current.finished = false;
         };
     }
 
