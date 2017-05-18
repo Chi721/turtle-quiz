@@ -64,6 +64,10 @@
             }
         };
 
+        /**
+         * close warning
+         * @return {[type]} [description]
+         */
         current.closeWarning = function(){
         	current.warning = false;
         };
