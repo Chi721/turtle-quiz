@@ -1,0 +1,4 @@
+Founded & not tackled issues:
+
+1. The boxes/tiles are not with same height in one breakpoint. See the first two boxes in the first row.
+¡ª> Perhaps fix it after the whole app is finished. Advice: http://brm.io/jquery-match-height/
