@@ -3,13 +3,13 @@
     var app = angular.module('turtleFacts');
     app.controller('quizCtrl', quizController);
 
-    quizController.$inject = ['quizMetrics', 'dataService'];
+    quizController.$inject = ['quizMetrics', 'dataService', 'shareData'];
 
-    function quizController(quizMetrics, dataService) {
+    function quizController(quizMetrics, dataService, shareData) {
         var current = this;
 
         current.quizMetrics = quizMetrics;
-        // current.shareData = shareData;
+        current.shareData = shareData;
         current.activeQuestionIndex = 0;
         current.questionAnswered = false;
         current.quizQuestions = [];
@@ -19,7 +19,7 @@
 
         dataService.quizQuestions().success(function(data) {
             current.quizQuestions = data;
-            // current.shareData.setQuizQuestions(current.quizQuestions);
+            current.shareData.setQuizQuestions(current.quizQuestions);
         });
 
         /**

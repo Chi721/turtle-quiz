@@ -3,9 +3,9 @@
     var app = angular.module('turtleFacts');
     app.controller('quizResults', quizResults);
 
-    quizResults.$inject = ['quizMetrics', 'dataService'];
+    quizResults.$inject = ['quizMetrics', 'dataService', 'shareData'];
 
-    function quizResults(quizMetrics, dataService) {
+    function quizResults(quizMetrics, dataService, shareData) {
         var result = this;
 
         result.quizMetrics = quizMetrics;
@@ -13,17 +13,17 @@
         result.numOfCorrectAnswers = 0;
         result.correctPercentage = 0;
 
-        dataService.quizQuestions().success(function(data) {
-            result.quizData = data;
-        });
+        // dataService.quizQuestions().success(function(data) {
+        //     result.quizQuestions = data;
+        // });
 
-        // result.quizData = shareData.quizQuestions;
+        result.quizQuestions = shareData.quizQuestions;
 
         result.countCorrectAnswers = function() {
-            var quizLength = result.quizData.length;
+            var quizLength = result.quizQuestions.length;
 
             for (var i = 0; i < quizLength; i++) {
-                if (result.quizData[i].selected === result.quizAnswers[i]) {
+                if (result.quizQuestions[i].selected === result.quizAnswers[i]) {
                     result.numOfCorrectAnswers++;
                 }
             }

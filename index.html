@@ -181,7 +181,7 @@
         <!-- start of Quiz Results -->
         <div class="row" ng-controller="quizResults as result" ng-show="result.quizMetrics.quizResultIsActive">
             <h3>Results:</h3>
-            <h4>You scored: {{result.countCorrectAnswers()}} / {{result.quizData.length}}</h4>
+            <h4>You scored: {{result.countCorrectAnswers()}} / {{result.quizQuestions.length}}</h4>
             <h4></h4>
             <div class="col-xs-12">
             </div>
@@ -197,7 +197,7 @@
     <script src="app.js"></script>
     <script src="factory/quizMetrics.js"></script>
     <script src="factory/dataService.js"></script>
-    <!-- <script src="factory/shareData.js"></script> -->
+    <script src="factory/shareData.js"></script>
     <script src="controllers/list.js"></script>
     <script src="controllers/quiz.js"></script>
     <script src="controllers/result.js"></script>
