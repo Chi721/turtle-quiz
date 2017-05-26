@@ -93,14 +93,6 @@
 
             current.quizMetrics.changeQuizState("result", true);
         };
-
-        current.confirmSubmitAnswers = function(){
-            // to do ...
-        };
-
-        current.cancelSubmitAnswers = function(){
-            current.finished = false;
-        };
     }
 
 })();
