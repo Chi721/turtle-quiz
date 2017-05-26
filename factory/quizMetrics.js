@@ -11,11 +11,27 @@
 	function quizMetrics(){
 		var quizObj = {
 			quizIsActive: false,
+			quizResultIsActive: false,
 			changeQuizState: changeQuizState
 		}
 
-		function changeQuizState(state) {
-			this.quizIsActive = state;
+		function changeQuizState(operation, state) {
+			if(operation === "quiz"){
+				this.quizIsActive = state;
+				if(state === true){
+					this.quizResultIsActive = !state;
+				}
+			}
+			else if(operation === "result"){
+				this.quizResultIsActive = state;
+				if(state === true){
+					this.quizIsActive = !state;
+				}
+			}
+			else {
+				console.log("wrong operation ");
+			}
+			
 		}
 
 		return quizObj;

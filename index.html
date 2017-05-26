@@ -19,7 +19,7 @@
                 <strong>TURTLE QUIZ</strong>
             </h3>
         </div>
-        <div class="" ng-controller="listCtrl as list" ng-hide="list.quizMetrics.quizIsActive">
+        <div class="" ng-controller="listCtrl as list" ng-hide="list.quizMetrics.quizIsActive || list.quizMetrics.quizResultIsActive ">
             <!-- start of the search field  -->
             <div class="row">
                 <div class="col-sm-12">
@@ -104,7 +104,7 @@
             </div>
         </div>
         <!-- End of List Controller  -->
-        <div class="turtle-quiz" ng-controller="quizCtrl as quiz" ng-show="quiz.quizMetrics.quizIsActive">
+        <div class="turtle-quiz" ng-controller="quizCtrl as quiz" ng-show="quiz.quizMetrics.quizIsActive && !quiz.quizMetrics.quizResultIsActive">
             <div class="row">
                 <!-- start of Quiz Process Buttons -->
                 <div class="col-xs-8">
@@ -135,7 +135,7 @@
                 </div>
             </div>
             <!-- start of Quiz Question Form  -->
-            <div class="row">
+            <div class="row" ng-hide="quiz.isReadyToSubmit">
                 <div class="alert alert-danger" ng-show="quiz.warning">
                     Warning: You haven't answered all questions!
                     <button class="close pull-right" ng-click="quiz.closeWarning()">&times</button>
@@ -178,8 +178,28 @@
                     </div>
                 </div> <!-- Confirm to submit answers -->
             </div>
+            <div class="row" ng-show="quiz.isReadyToSubmit">
+                <div class="col-xs-12">
+                    <div class="well well-sm">
+                        <h4>Are you sure you want to submit your answers?</h4>
+                        <button class="btn btn-success" ng-click="quiz.confirmSubmit()">Yes</button>
+                        <button class="btn btn-danger" ng-click="quiz.cancelSubmit()">No</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- End of Quiz Controller -->
+
+        <!-- start of Quiz Results -->
+        <div class="row" ng-controller="quizResults as result" ng-show="result.quizMetrics.quizResultIsActive">
+            <h3>Results:</h3>
+            <h4>You scored: {{result.countCorrectAnswers()}} / {{result.quizQuestions.length}}</h4>
+            <h4></h4>
+            <div class="col-xs-12">
+            </div>
+        </div>
+
+
     </div>
     <!-- third party js -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular.min.js"></script>
@@ -189,8 +209,10 @@
     <script src="app.js"></script>
     <script src="factory/quizMetrics.js"></script>
     <script src="factory/dataService.js"></script>
+    <script src="factory/shareData.js"></script>
     <script src="controllers/list.js"></script>
     <script src="controllers/quiz.js"></script>
+    <script src="controllers/result.js"></script>
 </body>
 
 </html>
