@@ -9,13 +9,17 @@
         var current = this;
 
         current.quizMetrics = quizMetrics;
+        // current.shareData = shareData;
         current.activeQuestionIndex = 0;
         current.questionAnswered = false;
         current.quizQuestions = [];
         current.warning = false;
+        current.isReadyToSubmit = false;
+        // current.isToSubmit = false;
 
         dataService.quizQuestions().success(function(data) {
             current.quizQuestions = data;
+            // current.shareData.setQuizQuestions(current.quizQuestions);
         });
 
         /**
@@ -46,30 +50,52 @@
         current.goToNextQuestion = function() {
             var quizQuestionsLength = current.quizQuestions.length;
 
-            if (current.activeQuestionIndex < quizQuestionsLength - 1) {
+            if (current.activeQuestionIndex < quizQuestionsLength) {
                 current.activeQuestionIndex++;
-            } else {
-                current.activeQuestionIndex = 0;
             }
+            // else {
+            //     current.activeQuestionIndex = 0;
+            // }
 
-            if (current.activeQuestionIndex === 0) {
-            	for(var i = 0; i < quizQuestionsLength; i++){
-            		if (current.quizQuestions[i].selected === null) {
+            // check if all questions are answered
+            // if not, jump to the unanswered question
+            if (current.activeQuestionIndex >= quizQuestionsLength) {
+                var allAnswered = true;
+                for (var i = 0; i < quizQuestionsLength; i++) {
+                    if (current.quizQuestions[i].selected === null) {
                         current.warning = true;
+                        allAnswered = false;
+
                         // jump to the first unanswered question
                         current.activeQuestionIndex = i;
                         break;
                     }
-            	}
+                }
+                current.isReadyToSubmit = allAnswered;
             }
+
         };
 
         /**
          * close warning
          * @return {[type]} [description]
          */
-        current.closeWarning = function(){
-        	current.warning = false;
+        current.closeWarning = function() {
+            current.warning = false;
+        };
+
+        current.cancelSubmit = function() {
+            current.isReadyToSubmit = false;
+            current.warning = false;
+
+            // back to the question where the submit is performed
+            current.activeQuestionIndex--;
+            //quiz.changeQuizState("quiz", true);
+        };
+
+        current.confirmSubmit = function() {
+
+            current.quizMetrics.changeQuizState("result", true);
         };
     }
 

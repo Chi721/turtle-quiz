@@ -28,8 +28,7 @@
         }
 
         current.activateQuiz = function() {
-            // current.quizIsActive = true;
-            current.quizMetrics.changeQuizState(true);
+            current.quizMetrics.changeQuizState("quiz", true);
         }
     }
 
