@@ -19,6 +19,8 @@
 
         result.quizQuestions = shareData.quizQuestions;
 
+
+
         result.countCorrectAnswers = function() {
             var quizLength = result.quizQuestions.length;
 
@@ -30,8 +32,6 @@
 
             return result.numOfCorrectAnswers;
         };
-
-        //countCorrectAnswers();
     }
 
 })();

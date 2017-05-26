@@ -85,12 +85,13 @@
 
             // back to the question where the submit is performed
             current.activeQuestionIndex--;
-            //quiz.changeQuizState("quiz", true);
         };
 
         current.confirmSubmit = function() {
 
             current.quizMetrics.changeQuizState("result", true);
+            
+            // put the quizQuestions into a facotry to share it among controllers
             current.shareData.setQuizQuestions(current.quizQuestions);
         };
     }
