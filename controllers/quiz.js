@@ -14,12 +14,7 @@
         current.questionAnswered = false;
         current.quizQuestions = [];
         current.warning = false;
-<<<<<<< HEAD
-        current.finished = false;
-=======
         current.isReadyToSubmit = false;
-        // current.isToSubmit = false;
->>>>>>> dev
 
         dataService.quizQuestions().success(function(data) {
             current.quizQuestions = data;
