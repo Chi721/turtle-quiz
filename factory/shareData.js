@@ -8,7 +8,7 @@
         var turtleObj = {
             turtleData: [],
             quizQuestions: [],
-            quizAnswers: [3, 2, 2, 0, 1, 3, 0, 1, 3, 1],
+            quizAnswers: [3, 2, 2, 0],
             setQuizQuestions: setQuizQuestions
         };
 

@@ -24,7 +24,7 @@
         }
 
         function getQuizQuestions() {
-            return $http.get('/angular-demo/turtle-quiz/data/quiz-questions.json');
+            return $http.get('/angular-demo/turtle-quiz/data/quiz-questions-1.json');
         }
 
         return turtleObj;

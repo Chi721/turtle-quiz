@@ -9,7 +9,7 @@
         var result = this;
 
         result.quizMetrics = quizMetrics;
-        result.quizAnswers = dataService.quizAnswers; // standard correct answers
+        result.quizAnswers = shareData.quizAnswers; // standard correct answers
         result.numOfCorrectAnswers = 0;
         result.correctPercentage = 0;
 

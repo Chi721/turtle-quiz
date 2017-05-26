@@ -17,8 +17,7 @@
         current.isReadyToSubmit = false;
 
         dataService.quizQuestions().success(function(data) {
-            current.quizQuestions = data;
-            current.shareData.setQuizQuestions(current.quizQuestions);
+            current.quizQuestions = data;            
         });
 
         /**
@@ -92,6 +91,7 @@
         current.confirmSubmit = function() {
 
             current.quizMetrics.changeQuizState("result", true);
+            current.shareData.setQuizQuestions(current.quizQuestions);
         };
     }
 
