@@ -52,24 +52,13 @@
             if (current.activeQuestionIndex < quizQuestionsLength) {
                 current.activeQuestionIndex++;
             }
-            // else {
-            //     current.activeQuestionIndex = 0;
-            // }
 
-<<<<<<< HEAD
-            if (current.activeQuestionIndex === 0) {
-                var allAnswered = true;
-
-            	for(var i = 0; i < quizQuestionsLength; i++){
-            		if (current.quizQuestions[i].selected === null) {
-=======
             // check if all questions are answered
             // if not, jump to the unanswered question
             if (current.activeQuestionIndex >= quizQuestionsLength) {
                 var allAnswered = true;
                 for (var i = 0; i < quizQuestionsLength; i++) {
                     if (current.quizQuestions[i].selected === null) {
->>>>>>> dev
                         current.warning = true;
                         allAnswered = false;
 
@@ -77,14 +66,8 @@
                         current.activeQuestionIndex = i;
                         break;
                     }
-<<<<<<< HEAD
-            	}
-
-                current.finished = allAnswered;
-=======
                 }
                 current.isReadyToSubmit = allAnswered;
->>>>>>> dev
             }
 
         };
